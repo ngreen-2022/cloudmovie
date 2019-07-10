@@ -1,0 +1,8 @@
+{
+  "body": "{\"likes\":[\"Wake Up, Lucy\"]}",
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "USER-SUB-1234"
+    }
+  }
+}
