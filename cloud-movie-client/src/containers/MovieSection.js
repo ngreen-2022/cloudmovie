@@ -16,6 +16,7 @@ const MovieSection = ({ list, sectionTitle }) => {
               key={movie.title}
               genre={movie.genre}
               title={movie.title}
+              content={movie.content}
               description={movie.description}
             />
           ))}

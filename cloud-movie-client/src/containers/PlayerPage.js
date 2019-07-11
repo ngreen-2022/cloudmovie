@@ -33,7 +33,11 @@ const PlayerPage = ({
 
   const { genre, title, validUrl, pageLoad } = movieData;
 
-  return <Fragment />;
+  return (
+    <Fragment>
+      {genre} - {title}
+    </Fragment>
+  );
 };
 
 PlayerPage.propTypes = {
