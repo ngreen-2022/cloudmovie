@@ -6,14 +6,15 @@ import PropTypes from 'prop-types';
 const MovieSection = ({ list, sectionTitle }) => {
   return (
     <div>
-      <Row>
-        <h3 className='ml-3'>{sectionTitle}</h3>
+      <Row className='panel panel-default'>
+        <h1 className='panel-heading ml-3 my-4'>{sectionTitle}</h1>
       </Row>
       <Row>
         <Col className='d-flex flex-wrap flex-row'>
           {list.map(movie => (
             <MovieItem
-              key={movie.title}
+              key={movie.id}
+              id={movie.id}
               genre={movie.genre}
               title={movie.title}
               content={movie.content}

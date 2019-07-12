@@ -20,7 +20,7 @@ const Navigation = ({ isAuthenticated, logout }) => {
         </Link>
       </Navbar.Brand>
       <Navbar.Collapse>
-        <Nav>
+        <Nav className='ml-auto'>
           {isAuthenticated ? (
             <Nav>
               <LinkContainer to='/movielist'>

@@ -16,7 +16,7 @@ const Routes = props => {
       <Route path='/login' exact component={Login} />
       <Route path='/signup' exact component={Signup} />
       <Route path='/playground' exact component={Playground} />
-      <PrivateRouter path='/movie/:genre/:title' exact component={Watch} />
+      <PrivateRouter path='/watch/:id' exact component={Watch} />
       <PrivateRouter path='/movielist' exact component={MovieList} />
       <Route component={NotFound} />
     </Switch>

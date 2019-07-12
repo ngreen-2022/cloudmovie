@@ -55,7 +55,7 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Redirect to='/movielist' />;
   }
 
   const renderConfirmationForm = () => {
