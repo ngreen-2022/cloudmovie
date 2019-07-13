@@ -12,10 +12,9 @@ export const loadProfile = () => async dispatch => {
   dispatch({ type: BEGIN_USER_LOAD });
   try {
     const profile = await API.get('movies', '/getUser');
-    console.log(profile);
     dispatch({ type: USER_LOADED, payload: profile });
   } catch (e) {
-    dispatch({ PROFILE_ERROR });
+    dispatch({ type: PROFILE_ERROR });
   }
 };
 
