@@ -1,4 +1,5 @@
 {
+  "body": "{\"name\":\"TEST-USER-1234\"}",
   "requestContext": {
     "identity": {
       "cognitoIdentityId": "NEW-API-1234"

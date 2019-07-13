@@ -4,22 +4,18 @@ import { success, failure } from './libs/response-lib';
 export async function main(event, context) {
   const params = {
     TableName: 'Movies',
-
-    Key: {
-      genre: event.pathParameters.genre,
-      title: event.pathParameters.title
+    IndexName: 'id-index',
+    KeyConditionExpression: 'id = :id',
+    ExpressionAttributeValues: {
+      ':id': event.pathParameters.id
     }
   };
 
   try {
-    const result = await dynamoDbLib.call('get', params);
-    console.log(result);
-    if (result.Item) {
-      return success(result.Item);
-    } else {
-      return failure({ status: false, error: 'Item not found' });
-    }
+    const result = await dynamoDbLib.call('query', params);
+    return success(result.Items);
   } catch (e) {
+    console.log(e);
     return failure({ status: false });
   }
 }

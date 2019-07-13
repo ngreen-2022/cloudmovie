@@ -52,7 +52,7 @@ functions:
     handler: get.main
     events:
       - http:
-          path: movie
+          path: movie/{id}
           method: get
           cors: true
           authorizer: aws_iam

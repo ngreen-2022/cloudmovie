@@ -1,8 +1,8 @@
 {
-  "body": "{\"likes\":[\"Wake Up, Lucy\"]}",
+  "body": "{\"likes\":[\"70efe1ae-55cd-4ee5-939f-f182a0304960\"]}",
   "requestContext": {
     "identity": {
-      "cognitoIdentityId": "USER-SUB-1234"
+      "cognitoIdentityId": "us-east-2:81554d56-2d40-483d-8d58-819947125393"
     }
   }
 }

@@ -1,5 +1,6 @@
 import {
   GET_MOVIES_BEGIN,
+  GET_MOVIE_SUCCESS,
   GET_HORROR_SUCCESS,
   GET_DRAMA_SUCCESS,
   GET_FANTASY_SUCCESS,
@@ -7,6 +8,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
+  movie: {},
   horrorList: [],
   dramaList: [],
   fantasyList: [],
@@ -21,6 +23,12 @@ export default function(state = initialState, action) {
     case GET_MOVIES_BEGIN:
       return {
         ...state
+      };
+    case GET_MOVIE_SUCCESS:
+      return {
+        ...state,
+        movie: payload,
+        loading: false
       };
     case GET_HORROR_SUCCESS:
       return {

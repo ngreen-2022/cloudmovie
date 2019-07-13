@@ -1,12 +1,33 @@
 import {
   GET_MOVIES_BEGIN,
   GET_MOVIES_FAIL,
+  GET_MOVIE_SUCCESS,
   GET_HORROR_SUCCESS,
   GET_DRAMA_SUCCESS,
   GET_FANTASY_SUCCESS
 } from '../actions/types';
 
 import { API } from 'aws-amplify';
+
+export const getMovieById = movieId => async dispatch => {
+  dispatch({ type: GET_MOVIES_BEGIN });
+
+  try {
+    const movie = await API.get('movies', `/movie/${movieId}`);
+    const { id, title, content, genre, description } = movie[0];
+    const movieMd = {
+      id,
+      title,
+      content,
+      genre,
+      description
+    };
+
+    dispatch({ type: GET_MOVIE_SUCCESS, payload: movieMd });
+  } catch (e) {
+    dispatch({ type: GET_MOVIES_FAIL });
+  }
+};
 
 export const getMovies = genre => async dispatch => {
   dispatch({ type: GET_MOVIES_BEGIN });

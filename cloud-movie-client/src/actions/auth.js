@@ -43,9 +43,9 @@ export const registerConfirm = ({
 
 export const loadUser = () => async dispatch => {
   try {
-    const user = await Auth.currentSession();
+    const authUser = await Auth.currentAuthenticatedUser();
 
-    dispatch({ type: USER_LOADED, payload: user });
+    dispatch({ type: USER_LOADED, payload: authUser });
   } catch (err) {
     dispatch({ type: AUTH_ERROR });
   }

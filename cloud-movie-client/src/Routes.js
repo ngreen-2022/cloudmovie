@@ -6,8 +6,11 @@ import Signup from './containers/Signup';
 import MovieList from './containers/MovieList';
 import NotFound from './containers/NotFound';
 import PrivateRouter from './containers/routing/PrivateRouter';
-import Playground from './containers/Playground';
 import Watch from './containers/Watch';
+import ProfilePage from './containers/ProfilePage';
+
+// Testing
+import Playground from './containers/Playground';
 
 const Routes = props => {
   return (
@@ -18,6 +21,7 @@ const Routes = props => {
       <Route path='/playground' exact component={Playground} />
       <PrivateRouter path='/watch/:id' exact component={Watch} />
       <PrivateRouter path='/movielist' exact component={MovieList} />
+      <PrivateRouter path='/me' exact component={ProfilePage} />
       <Route component={NotFound} />
     </Switch>
   );

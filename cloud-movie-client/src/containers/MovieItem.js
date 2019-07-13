@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const MovieItem = ({ title, genre, description, content, id }) => {
+const MovieItem = ({ title, genre, description, id }) => {
   const pickCardImg = () => {
     if (genre === 'horror') {
       return <Card.Img variant='top' src={require('./imgs/horrorTwo.jpg')} />;
@@ -32,7 +32,7 @@ const MovieItem = ({ title, genre, description, content, id }) => {
               className='btn btn-primary btn-block'
               to={{
                 pathname: `/watch/${id}`,
-                state: { title, content, genre, description }
+                state: { title, genre, description }
               }}
             >
               <span className='text-center'>Watch Now</span>
@@ -47,7 +47,8 @@ const MovieItem = ({ title, genre, description, content, id }) => {
 MovieItem.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default MovieItem;

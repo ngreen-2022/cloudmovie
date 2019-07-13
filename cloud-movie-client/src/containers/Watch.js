@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactPlayer from 'react-player';
+import { connect } from 'react-redux';
+import { Card, Accordion } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './css/Watch.css';
-import NotFound from './NotFound';
+import Spinner from './layout/Spinner';
+import { getMovieById } from '../actions/movies';
 
-const Watch = ({ location }) => {
+const Watch = ({ location, getMovieById, match, loading, movie }) => {
+  useEffect(() => {
+    getMovieById(match.params.id);
+  }, []);
+
   if (location.state === undefined) {
     return <Redirect to='/notfound' />;
   }
 
   const {
-    state: { title, genre, description, content }
+    state: { title, genre, description }
   } = location;
 
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <div>
       <div className='player-wrapper mt-4 mb-4'>
         <ReactPlayer
           className='react-player'
-          url={content}
+          url={movie.content}
           width='100%'
           height='100%'
           playing={false}
@@ -27,19 +36,39 @@ const Watch = ({ location }) => {
         />
       </div>
       <div className='container'>
-        <h3 className='row ml-1 mt-4 mb-4'>
-          {title}
-          <h4>
-            <span className='ml-2 badge badge-info'> - {genre}</span>
-          </h4>
-          <hr style={{ width: '100%', color: 'grey' }} className='my-4' />
-          <p className='small'>{description}</p>
-        </h3>
+        <div className='row ml-1 mt-4 mb-4'>
+          <h4 className='font-weight-bold m-0'>{title}</h4>
+          <h6>
+            <span className='mt-2 ml-2 badge badge-info'> - {genre}</span>
+          </h6>
+          <hr style={{ width: '100%', color: 'grey' }} className='my-3' />
+          <Accordion style={{ width: '100%' }}>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey='0'>
+                <span className='font-weight-bold'>Synopsis</span>
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey='0'>
+                <Card.Body className='small'>{description}</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+        </div>
       </div>
     </div>
   );
 };
 
-Watch.propTypes = {};
+Watch.propTypes = {
+  movie: PropTypes.object,
+  loading: PropTypes.bool.isRequired
+};
 
-export default Watch;
+const mapStateToProps = state => ({
+  movie: state.movies.movie,
+  loading: state.movies.loading
+});
+
+export default connect(
+  mapStateToProps,
+  { getMovieById }
+)(Watch);
