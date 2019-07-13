@@ -1,19 +1,47 @@
-import { GET_PROFILE, PROFILE_ERROR, FILL_USER_LIKES } from '../actions/types';
+import {
+  GET_PROFILE,
+  PROFILE_ERROR,
+  FILL_USER_LIKES,
+  UPDATE_LIKE_IDS,
+  USER_LOADED,
+  BEGIN_USER_LOAD
+} from '../actions/types';
 
 const initialState = {
   profile: null,
   loading: true,
-  userLikes: []
+  userLikes: [],
+  likeIds: []
 };
 
 export default function(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case BEGIN_USER_LOAD:
+      return {
+        ...state,
+        loading: true
+      };
+    case USER_LOADED:
+      return {
+        ...state,
+        likeIds: payload.likes,
+        profile: payload,
+        userLikes: [],
+        loading: false
+      };
     case GET_PROFILE:
       return {
         ...state,
-        profile: payload
+        profile: payload,
+        loading: false
+      };
+    case UPDATE_LIKE_IDS:
+      return {
+        ...state,
+        likeIds: payload,
+        loading: false
       };
     case FILL_USER_LIKES:
       return {

@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { addMovieToLikes } from '../actions/profile';
+import Spinner from './layout/Spinner';
 
-const MovieItem = ({ title, genre, description, id }) => {
+const MovieItem = ({
+  title,
+  genre,
+  description,
+  id,
+  likeIds,
+  addMovieToLikes
+}) => {
   const pickCardImg = () => {
     if (genre === 'horror') {
       return <Card.Img variant='top' src={require('./imgs/horrorTwo.jpg')} />;
@@ -12,6 +22,18 @@ const MovieItem = ({ title, genre, description, id }) => {
     } else if (genre === 'fantasy') {
       return <Card.Img variant='top' src={require('./imgs/fantasy.jpeg')} />;
     }
+  };
+
+  const onClick = e => {
+    e.preventDefault();
+
+    addMovieToLikes([...likeIds, id]);
+  };
+
+  const onUnlike = e => {
+    e.preventDefault();
+
+    addMovieToLikes(likeIds.filter(toUnlike => toUnlike !== id));
   };
 
   return (
@@ -27,9 +49,9 @@ const MovieItem = ({ title, genre, description, id }) => {
               ? description.substring(0, 160) + '...'
               : description}
           </Card.Text>
-          <div>
+          <div style={{ width: '246px' }}>
             <Link
-              className='btn btn-primary btn-block'
+              className='btn btn-primary mr-3'
               to={{
                 pathname: `/watch/${id}`,
                 state: { title, genre, description }
@@ -37,6 +59,19 @@ const MovieItem = ({ title, genre, description, id }) => {
             >
               <span className='text-center'>Watch Now</span>
             </Link>
+            {!likeIds.includes(id) ? (
+              <Button onClick={e => onClick(e)} className='btn btn-secondary'>
+                Add to Likes
+              </Button>
+            ) : (
+              <Button
+                style={{ width: '116px' }}
+                onClick={e => onUnlike(e)}
+                className='btn btn-danger'
+              >
+                Unlike
+              </Button>
+            )}
           </div>
         </Card.Body>
       </Card>
@@ -51,4 +86,13 @@ MovieItem.propTypes = {
   id: PropTypes.string.isRequired
 };
 
-export default MovieItem;
+const mapStateToProps = state => ({
+  likeIds: state.profile.likeIds,
+  loading: state.movies.loading,
+  profileLoading: state.profile.loading
+});
+
+export default connect(
+  mapStateToProps,
+  { addMovieToLikes }
+)(MovieItem);

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../actions/profile';
 import Spinner from './layout/Spinner';
-import ProfileLikeItem from './ProfileLikeItem';
 import { Carousel } from 'react-bootstrap';
 
 const ProfilePage = ({ profile, loading, getCurrentProfile, userLikes }) => {
@@ -15,7 +14,8 @@ const ProfilePage = ({ profile, loading, getCurrentProfile, userLikes }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <h3>Welcome, {profile.name}</h3>
+      <h2>Welcome, {profile.name}</h2>
+      <h4>Your Likes</h4>
       {userLikes.length > 0 ? (
         <div className='carouselContainer' style={{ width: '400px' }}>
           <Carousel>

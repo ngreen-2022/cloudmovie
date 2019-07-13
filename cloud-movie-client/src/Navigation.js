@@ -24,10 +24,17 @@ const Navigation = ({ isAuthenticated, logout }) => {
           {isAuthenticated ? (
             <Nav>
               <LinkContainer to='/movielist'>
-                <Nav.Link eventKey='link-3'>Movies</Nav.Link>
+                <Nav.Link eventKey='link-3'>
+                  <i className='fas fa-ticket-alt' /> Movies
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/me'>
+                <Nav.Link eventKey='link-4'>
+                  <i className='fas fa-user' /> Profile
+                </Nav.Link>
               </LinkContainer>
               <Nav.Link eventKey='link-0' onClick={onLogout}>
-                Logout
+                <i className='fas fa-power-off' /> Logout
               </Nav.Link>
             </Nav>
           ) : (

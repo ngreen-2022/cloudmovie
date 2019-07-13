@@ -5,7 +5,8 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   REGISTER_SUCCESS,
-  REGISTER_CONFIRM
+  REGISTER_CONFIRM,
+  BEGIN_USER_LOAD
 } from './types';
 import Auth from '@aws-amplify/auth';
 import { API } from 'aws-amplify';
@@ -42,6 +43,7 @@ export const registerConfirm = ({
 };
 
 export const loadUser = () => async dispatch => {
+  dispatch({ type: BEGIN_USER_LOAD });
   try {
     const authUser = await Auth.currentAuthenticatedUser();
 

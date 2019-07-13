@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { getMovies } from '../actions/movies';
+import { loadProfile } from '../actions/profile';
 import Spinner from './layout/Spinner';
 import MovieSection from './MovieSection';
 
@@ -11,9 +12,11 @@ const MovieList = ({
   dramaList,
   fantasyList,
   getMovies,
+  loadProfile,
   loading
 }) => {
   useEffect(() => {
+    loadProfile();
     getMovies('horror');
     getMovies('drama');
     getMovies('fantasy');
@@ -46,5 +49,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getMovies }
+  { getMovies, loadProfile }
 )(MovieList);

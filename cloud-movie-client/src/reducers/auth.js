@@ -6,7 +6,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  REGISTER_CONFIRM
+  REGISTER_CONFIRM,
+  BEGIN_USER_LOAD
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +19,11 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case BEGIN_USER_LOAD:
+      return {
+        ...state,
+        loading: true
+      };
     case USER_LOADED:
       return {
         ...state,

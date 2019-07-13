@@ -5,9 +5,11 @@ import Navigation from './Navigation';
 import Routes from './Routes';
 import './App.css';
 import { loadUser } from './actions/auth';
+import { loadProfile } from './actions/profile';
 
 const App = () => {
   useEffect(() => {
+    store.dispatch(loadProfile());
     store.dispatch(loadUser());
   }, []);
   return (
