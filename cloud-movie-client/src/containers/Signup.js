@@ -11,6 +11,7 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    name: '',
     confirmPassword: '',
     confirmationCode: '',
     isOnConfirm: false
@@ -20,6 +21,7 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
     isOnConfirm,
     email,
     password,
+    name,
     confirmPassword,
     confirmationCode
   } = formData;
@@ -28,7 +30,7 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    register({ email, password });
+    register({ email, name, password });
 
     setFormData({ ...formData, isOnConfirm: true });
   };
@@ -36,7 +38,7 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
   const handleConfirmationSubmit = e => {
     e.preventDefault();
 
-    registerConfirm({ email, password, confirmationCode });
+    registerConfirm({ email, name, password, confirmationCode });
 
     setFormData({ ...formData, isAuthenticated: true });
   };
@@ -94,6 +96,15 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
             type='email'
             name='email'
             value={email}
+            onChange={e => onChange(e)}
+          />
+        </Form.Group>
+        <Form.Group controlId='name' size='lg'>
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type='name'
+            name='name'
+            value={name}
             onChange={e => onChange(e)}
           />
         </Form.Group>

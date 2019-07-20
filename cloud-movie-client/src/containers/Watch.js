@@ -51,6 +51,7 @@ const Watch = ({ location, getMovieById, match, loading, movie }) => {
                 <Card.Body className='small'>{description}</Card.Body>
               </Accordion.Collapse>
             </Card>
+            
           </Accordion>
         </div>
       </div>

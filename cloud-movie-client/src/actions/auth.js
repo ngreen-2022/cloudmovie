@@ -11,7 +11,7 @@ import {
 import Auth from '@aws-amplify/auth';
 import { API } from 'aws-amplify';
 
-export const register = ({ email, password }) => async dispatch => {
+export const register = ({ email, name, password }) => async dispatch => {
   try {
     await Auth.signUp(email, password);
 
@@ -23,6 +23,7 @@ export const register = ({ email, password }) => async dispatch => {
 
 export const registerConfirm = ({
   email,
+  name,
   password,
   confirmationCode
 }) => async dispatch => {
@@ -34,7 +35,11 @@ export const registerConfirm = ({
 
     // console.log(movies);
 
-    await API.post('movies', '/createUser');
+    await API.post('movies', '/createUser', {
+      body: {
+        name
+      }
+    });
 
     dispatch({ type: REGISTER_CONFIRM, payload: user });
   } catch (err) {
