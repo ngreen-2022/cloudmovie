@@ -3,15 +3,21 @@ import {
   GET_MOVIE_SUCCESS,
   GET_HORROR_SUCCESS,
   GET_DRAMA_SUCCESS,
-  GET_FANTASY_SUCCESS,
-  GET_MOVIES_FAIL
+  GET_MOVIES_FAIL,
+  GET_DOCUMENTARY_SUCCESS,
+  GET_COMEDY_SUCCESS,
+  GET_MYSTERY_SUCCESS,
+  GET_SCIFI_SUCCESS
 } from '../actions/types';
 
 const initialState = {
   movie: {},
   horrorList: [],
   dramaList: [],
-  fantasyList: [],
+  documentaryList: [],
+  comedyList: [],
+  mysteryList: [],
+  scifiList: [],
   loading: true,
   errors: {}
 };
@@ -42,16 +48,33 @@ export default function(state = initialState, action) {
         dramaList: payload,
         loading: false
       };
-    case GET_FANTASY_SUCCESS:
+    case GET_DOCUMENTARY_SUCCESS:
       return {
         ...state,
-        fantasyList: payload,
+        documentaryList: payload,
+        loading: false
+      };
+    case GET_COMEDY_SUCCESS:
+      return {
+        ...state,
+        comedyList: payload,
+        loading: false
+      };
+    case GET_MYSTERY_SUCCESS:
+      return {
+        ...state,
+        mysteryList: payload,
+        loading: false
+      };
+    case GET_SCIFI_SUCCESS:
+      return {
+        ...state,
+        scifiList: payload,
         loading: false
       };
     case GET_MOVIES_FAIL:
       return {
         ...state,
-        moviesList: [],
         errors: payload,
         loading: false
       };

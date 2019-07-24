@@ -19,7 +19,7 @@ const MovieItem = ({
       return <Card.Img variant='top' src={require('./imgs/horrorTwo.jpg')} />;
     } else if (genre === 'drama') {
       return <Card.Img variant='top' src={require('./imgs/drama.jpeg')} />;
-    } else if (genre === 'fantasy') {
+    } else if (genre === 'documentary') {
       return <Card.Img variant='top' src={require('./imgs/fantasy.jpeg')} />;
     }
   };

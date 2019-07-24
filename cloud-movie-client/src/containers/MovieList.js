@@ -10,24 +10,28 @@ import MovieSection from './MovieSection';
 const MovieList = ({
   horrorList,
   dramaList,
-  fantasyList,
+  documentaryList,
+  scifiList,
+  mysteryList,
   getMovies,
   loadProfile,
   loading
 }) => {
   useEffect(() => {
     loadProfile();
-    getMovies('horror');
     getMovies('drama');
-    getMovies('fantasy');
+    getMovies('documentary');
+    getMovies('scifi');
+    getMovies('mystery');
   }, [getMovies]);
   return loading ? (
     <Spinner />
   ) : (
     <Container className='movieList'>
-      <MovieSection list={horrorList} sectionTitle={'Horror'} />
       <MovieSection list={dramaList} sectionTitle={'Drama'} />
-      <MovieSection list={fantasyList} sectionTitle={'Fantasy'} />
+      <MovieSection list={documentaryList} sectionTitle={'Documentary'} />
+      <MovieSection list={scifiList} sectionTitle={'Science Fiction'} />
+      <MovieSection list={mysteryList} sectionTitle={'Mystery'} />
     </Container>
   );
 };
@@ -36,14 +40,18 @@ MovieList.propTypes = {
   getMovies: PropTypes.func.isRequired,
   horrorList: PropTypes.array.isRequired,
   dramaList: PropTypes.array.isRequired,
-  fantasyList: PropTypes.array.isRequired,
+  documentaryList: PropTypes.array.isRequired,
+  scifiList: PropTypes.array.isRequired,
+  mysteryList: PropTypes.array.isRequired,
   loading: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
   horrorList: state.movies.horrorList,
   dramaList: state.movies.dramaList,
-  fantasyList: state.movies.fantasyList,
+  documentaryList: state.movies.documentaryList,
+  scifiList: state.movies.scifiList,
+  mysteryList: state.movies.mysteryList,
   loading: state.movies.loading
 });
 

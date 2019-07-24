@@ -4,7 +4,10 @@ import {
   GET_MOVIE_SUCCESS,
   GET_HORROR_SUCCESS,
   GET_DRAMA_SUCCESS,
-  GET_FANTASY_SUCCESS
+  GET_DOCUMENTARY_SUCCESS,
+  GET_COMEDY_SUCCESS,
+  GET_MYSTERY_SUCCESS,
+  GET_SCIFI_SUCCESS
 } from '../actions/types';
 
 import { API } from 'aws-amplify';
@@ -38,8 +41,14 @@ export const getMovies = genre => async dispatch => {
       dispatch({ type: GET_HORROR_SUCCESS, payload: movieList });
     } else if (genre === 'drama') {
       dispatch({ type: GET_DRAMA_SUCCESS, payload: movieList });
-    } else if (genre === 'fantasy') {
-      dispatch({ type: GET_FANTASY_SUCCESS, payload: movieList });
+    } else if (genre === 'documentary') {
+      dispatch({ type: GET_DOCUMENTARY_SUCCESS, payload: movieList });
+    } else if (genre === 'comedy') {
+      dispatch({ type: GET_COMEDY_SUCCESS, payload: movieList });
+    } else if (genre === 'mystery') {
+      dispatch({ type: GET_MYSTERY_SUCCESS, payload: movieList });
+    } else if (genre === 'scifi') {
+      dispatch({ type: GET_SCIFI_SUCCESS, payload: movieList });
     }
   } catch (err) {
     dispatch({ type: GET_MOVIES_FAIL });
