@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { logout } from './actions/auth';
 import { LinkContainer } from 'react-router-bootstrap';
-import './css/Navigation.css';
+import './containers/css/Navigation.css';
 
 const Navigation = ({ isAuthenticated, logout }) => {
   const onLogout = () => {
@@ -15,7 +15,7 @@ const Navigation = ({ isAuthenticated, logout }) => {
   return (
     <Navbar expand='lg' collapseOnSelect bg='dark' variant='dark'>
       <Navbar.Brand>
-        <Link style={{ textDecoration: 'none' }} to='/'>
+        <Link className='logo' style={{ textDecoration: 'none' }} to='/'>
           Omegaflix
         </Link>
       </Navbar.Brand>

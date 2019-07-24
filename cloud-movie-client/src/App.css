@@ -1,7 +1,15 @@
 .App {
   margin-top: 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: silver;
 }
 
 .App .navbar-brand {
   font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 60px;
+}
+
+body {
+  background-color: silver;
 }
