@@ -33,6 +33,9 @@ const ProfilePage = ({ profile, loading, getCurrentProfile, userLikes }) => {
               </Carousel.Item>
             ))}
           </Carousel>
+          <div className ='recommend '>
+            {/*list recommendations*/}
+          </div>
           <UserRecommends />
         </div>
       ) : (
