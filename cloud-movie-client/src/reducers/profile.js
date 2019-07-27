@@ -53,6 +53,7 @@ export default function(state = initialState, action) {
     case FINISH_USER_LIKES:
       return {
         ...state,
+        userLikes: [...state.userLikes],
         loading: false
       };
     case PROFILE_ERROR:
