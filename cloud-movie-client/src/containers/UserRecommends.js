@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from './layout/Spinner';
@@ -9,10 +9,20 @@ import MovieList from './MovieList';
 const UserRecommends = ({
   loading,
   userLikes,
+  mysteryList,
+  scifiList,
+  documentaryList,
   horrorList,
   dramaList,
   fantasyList
 }) => {
+  const [state, setState] = useState({
+    movie: null,
+    recommendedList: []
+  });
+
+  const { recommendedList } = state;
+
   const randomize = list => {
     for (let i = list.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -30,25 +40,40 @@ const UserRecommends = ({
       movieGenList = eval(randomGen + 'List');
 
       let randomMovie = randomize(movieGenList);
+
       //   while (randomMovie === randomLike) {
       //     randomMovie = randomize(movieGenList);
       //   }
       return randomMovie;
+      // setState({ ...state, movie: randomMovie });
     } else {
       return null;
     }
   };
 
+  useEffect(() => {
+    recommended();
+  }, []);
+
   return loading ? (
     <Spinner />
   ) : (
+    // <Fragment>
+    //   {recommended !== null ? (
+    //     <div>
+    //       <h3>{recommended().title}</h3>
+    //     </div>
+    //   ) : (
+    //     <h4>No Recomendations!</h4>
+    //   )}
+    // </Fragment>
     <Fragment>
-      {recommended != null ? (
+      {userLikes.length > 0 ? (
         <div>
-          <h3>{recommended().title}</h3>
+          <h3>{recommendedList.title}</h3>
         </div>
       ) : (
-        <h4>No Recomendations!</h4>
+        <h4>No recommendations</h4>
       )}
     </Fragment>
   );
@@ -61,6 +86,9 @@ const mapStateToProps = state => ({
   horrorList: state.movies.horrorList,
   dramaList: state.movies.dramaList,
   fantasyList: state.movies.fantasyList,
+  documentaryList: state.movies.documentaryList,
+  mysteryList: state.movies.mysteryList,
+  scifiList: state.movies.scifiList,
   loading: state.profile.loading
 });
 

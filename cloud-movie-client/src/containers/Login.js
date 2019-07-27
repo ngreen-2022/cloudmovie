@@ -5,8 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { login } from '../actions/auth';
+import { loadProfile } from '../actions/profile';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, loadProfile }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -30,7 +31,8 @@ const Login = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/movielist' />;
+    loadProfile();
+    return <Redirect to='/me' />;
   }
 
   return (
@@ -76,5 +78,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { login }
+  { login, loadProfile }
 )(Login);

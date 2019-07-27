@@ -25,3 +25,4 @@ export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const UPDATE_LIKE_IDS = 'UPDATE_LIKE_IDS';
 export const FILL_USER_LIKES = 'FILL_USER_LIKES';
+export const FINISH_USER_LIKES = 'FINISH_USER_LIKES';

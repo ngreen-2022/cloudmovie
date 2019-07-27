@@ -4,7 +4,8 @@ import {
   FILL_USER_LIKES,
   UPDATE_LIKE_IDS,
   USER_LOADED,
-  BEGIN_USER_LOAD
+  BEGIN_USER_LOAD,
+  FINISH_USER_LIKES
 } from '../actions/types';
 
 const initialState = {
@@ -35,7 +36,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         profile: payload,
-        loading: false
+        loading: true
       };
     case UPDATE_LIKE_IDS:
       return {
@@ -47,6 +48,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         userLikes: [...state.userLikes, payload],
+        loading: true
+      };
+    case FINISH_USER_LIKES:
+      return {
+        ...state,
+        userLikes: [...state.userLikes],
         loading: false
       };
     case PROFILE_ERROR:

@@ -23,7 +23,7 @@ const MovieList = ({
     getMovies('documentary');
     getMovies('scifi');
     getMovies('mystery');
-  }, [getMovies]);
+  }, []);
   return loading ? (
     <Spinner />
   ) : (

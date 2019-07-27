@@ -4,7 +4,8 @@ import {
   FILL_USER_LIKES,
   UPDATE_LIKE_IDS,
   USER_LOADED,
-  BEGIN_USER_LOAD
+  BEGIN_USER_LOAD,
+  FINISH_USER_LIKES
 } from './types';
 import { API } from 'aws-amplify';
 
@@ -40,6 +41,7 @@ export const getCurrentProfile = () => async dispatch => {
 
       dispatch({ type: FILL_USER_LIKES, payload: movieMd });
     }
+    dispatch({ type: FINISH_USER_LIKES });
   } catch (e) {
     dispatch({
       type: PROFILE_ERROR

@@ -1,15 +1,22 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCurrentProfile } from '../actions/profile';
+import { getCurrentProfile, loadProfile } from '../actions/profile';
 import UserRecommends from './UserRecommends';
 import Spinner from './layout/Spinner';
 import { Carousel } from 'react-bootstrap';
 
-const ProfilePage = ({ profile, loading, getCurrentProfile, userLikes }) => {
+const ProfilePage = ({
+  profile,
+  loading,
+  getCurrentProfile,
+  loadProfile,
+  userLikes
+}) => {
   useEffect(() => {
+    // loadProfile();
     getCurrentProfile();
-  }, [getCurrentProfile]);
+  }, []);
 
   return loading ? (
     <Spinner />
@@ -33,11 +40,12 @@ const ProfilePage = ({ profile, loading, getCurrentProfile, userLikes }) => {
               </Carousel.Item>
             ))}
           </Carousel>
-          <UserRecommends />
         </div>
       ) : (
         <h4>No Likes!</h4>
       )}
+
+      <UserRecommends />
     </Fragment>
   );
 };
@@ -52,5 +60,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getCurrentProfile, loadProfile }
 )(ProfilePage);

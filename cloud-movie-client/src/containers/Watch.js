@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, createRef, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
 import { Card, Accordion } from 'react-bootstrap';
@@ -9,8 +9,24 @@ import Spinner from './layout/Spinner';
 import { getMovieById } from '../actions/movies';
 
 const Watch = ({ location, getMovieById, match, loading, movie }) => {
+  // const [playerState, setPlayerState] = useState({
+  //   playerRef: createRef()
+  // });
+
+  const playerR = useRef(null);
+
   useEffect(() => {
     getMovieById(match.params.id);
+  }, []);
+
+  // dismount useeffect
+  useEffect(() => {
+    return function cleanup() {
+      // const currentTime = playerRef.getCurrentTime();
+      // const movieId = match.params.id;
+      localStorage.setItem('currentTime', playerR.current.getCurrentTime());
+      localStorage.setItem('movieId', match.params.id);
+    };
   }, []);
 
   if (location.state === undefined) {
@@ -27,6 +43,7 @@ const Watch = ({ location, getMovieById, match, loading, movie }) => {
     <div>
       <div className='player-wrapper mt-4 mb-4'>
         <ReactPlayer
+          ref={playerR}
           className='react-player'
           url={movie.content}
           width='100%'
@@ -51,7 +68,6 @@ const Watch = ({ location, getMovieById, match, loading, movie }) => {
                 <Card.Body className='small'>{description}</Card.Body>
               </Accordion.Collapse>
             </Card>
-            
           </Accordion>
         </div>
       </div>
