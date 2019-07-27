@@ -25,26 +25,44 @@ const UserRecommends = ({
   };
   const recommended = () => {
     let randomGen;
-    let movieGenList;
+    let movieGenList = [];
     let randomMovies = [];
     let randomLike;
     let randomMovie;
+    let likes = [];
     if (userLikes.length > 0) {
       let count = 0;
+      for (let i = 0; i < userLikes.length; i++) {
+        likes.push(userLikes[i].id);
+      }
 
       while (randomMovies.length < 3 || count < 3) {
         randomLike = randomize(userLikes);
         randomGen = randomLike.genre;
-        movieGenList = eval(randomGen + 'List');
+
+        if (randomGen === 'drama') {
+          movieGenList = dramaList;
+        } else if (randomGen === 'scifi') {
+          movieGenList = scifiList;
+        } else if (randomGen === 'mystery') {
+          movieGenList = mysteryList;
+        } else if (randomGen === 'documentary') {
+          movieGenList = documentaryList;
+        }
         randomMovie = randomize(movieGenList);
 
-        if (randomMovie === randomLike || randomMovies.includes(randomMovie)) {
-          continue;
-        } else {
+        if (
+          !randomMovies.includes(randomMovie, 0) &&
+          !likes.includes(randomMovie.id, 0)
+        ) {
+          console.log(!likes.includes(randomMovie.id, 0));
+          console.log(randomLike.id);
+          console.log(randomMovie.id);
           randomMovies.push(randomMovie);
         }
         count++;
       }
+      return randomMovies;
     }
     return randomMovies;
   };
