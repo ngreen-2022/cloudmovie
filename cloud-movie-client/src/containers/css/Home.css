@@ -11,3 +11,13 @@
 .Home .lander p {
   color: #999;
 }
+
+.jumbotron{
+  background-image: url("../imgs/moviereel.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.blockquote{
+  text-align: right;
+}

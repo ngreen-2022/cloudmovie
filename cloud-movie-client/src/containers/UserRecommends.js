@@ -5,16 +5,17 @@ import Spinner from './layout/Spinner';
 import { Carousel } from 'react-bootstrap';
 import ProfilePage from './ProfilePage';
 import MovieList from './MovieList';
+import { getMovies } from '../actions/movies';
 
 const UserRecommends = ({
   loading,
   userLikes,
-  mysteryList,
-  scifiList,
-  documentaryList,
-  horrorList,
   dramaList,
-  fantasyList
+  fantasyList,
+  scifiList,
+  mysteryList,
+  documentaryList,
+  getMovies
 }) => {
   const [state, setState] = useState({
     movie: null,
@@ -28,49 +29,47 @@ const UserRecommends = ({
       const j = Math.floor(Math.random() * (i + 1));
       [list[i], list[j]] = [list[j], list[i]];
     }
-    return userLikes[0];
+    return list[0];
   };
   const recommended = () => {
     let randomGen;
     let movieGenList;
+    let randomMovies = [];
+    let randomLike;
+    let randomMovie;
     if (userLikes.length > 0) {
-      let randomLike = randomize(userLikes);
-
-      randomGen = randomLike.genre;
-      movieGenList = eval(randomGen + 'List');
-
-      let randomMovie = randomize(movieGenList);
-
-      //   while (randomMovie === randomLike) {
-      //     randomMovie = randomize(movieGenList);
-      //   }
-      return randomMovie;
-      // setState({ ...state, movie: randomMovie });
+      let count = 0;
+      while (count < 5) {
+        randomLike = randomize(userLikes);
+        randomGen = randomLike.genre;
+        movieGenList = eval(randomGen + 'List');
+        randomMovie = randomize(movieGenList);
+        if (!randomMovies.includes(randomMovie)) {
+          randomMovies.push(randomMovie);
+        } else {
+          continue;
+        }
+        count++;
+      }
+      //todo: remove movie if it is in likes
+      if (randomMovies.length > 0) {
+        return randomMovies;
+      }
     } else {
       return null;
     }
   };
-
-  useEffect(() => {
-    recommended();
-  }, []);
-
+  var rec = recommended();
   return loading ? (
     <Spinner />
   ) : (
-    // <Fragment>
-    //   {recommended !== null ? (
-    //     <div>
-    //       <h3>{recommended().title}</h3>
-    //     </div>
-    //   ) : (
-    //     <h4>No Recomendations!</h4>
-    //   )}
-    // </Fragment>
     <Fragment>
-      {userLikes.length > 0 ? (
+      {rec != null ? (
         <div>
-          <h3>{recommendedList.title}</h3>
+          <h1>Recomendations</h1>
+          {rec.map(movie => (
+            <h4> {movie.title}</h4>
+          ))}
         </div>
       ) : (
         <h4>No recommendations</h4>
@@ -79,17 +78,25 @@ const UserRecommends = ({
   );
 };
 
-UserRecommends.propTypes = {};
+UserRecommends.propTypes = {
+  dramaList: PropTypes.array.isRequired,
+  fantasyList: PropTypes.array.isRequired,
+  documentaryList: PropTypes.array.isRequired,
+  scifiList: PropTypes.array.isRequired,
+  mysteryList: PropTypes.array.isRequired
+};
 
 const mapStateToProps = state => ({
   userLikes: state.profile.userLikes,
-  horrorList: state.movies.horrorList,
   dramaList: state.movies.dramaList,
   fantasyList: state.movies.fantasyList,
   documentaryList: state.movies.documentaryList,
-  mysteryList: state.movies.mysteryList,
   scifiList: state.movies.scifiList,
+  mysteryList: state.movies.mysteryList,
   loading: state.profile.loading
 });
 
-export default connect(mapStateToProps)(UserRecommends);
+export default connect(
+  mapStateToProps,
+  { getMovies }
+)(UserRecommends);

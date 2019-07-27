@@ -13,7 +13,7 @@ const Navigation = ({ isAuthenticated, logout }) => {
     logout();
   };
   return (
-    <Navbar expand='lg' collapseOnSelect bg='dark' variant='dark'>
+    <Navbar expand='lg' style={{backgroundColor:'black'}}>
       <Navbar.Brand>
         <Link className='logo' style={{ textDecoration: 'none' }} to='/'>
           Omegaflix
@@ -23,26 +23,26 @@ const Navigation = ({ isAuthenticated, logout }) => {
         <Nav className='ml-auto'>
           {isAuthenticated ? (
             <Nav>
-              <LinkContainer to='/movielist'>
+              <LinkContainer to='/movielist' style={{color:'silver'}}>
                 <Nav.Link eventKey='link-3'>
                   <i className='fas fa-ticket-alt' /> Movies
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/me'>
+              <LinkContainer to='/me' style={{color:'silver'}}>
                 <Nav.Link eventKey='link-4'>
                   <i className='fas fa-user' /> Profile
                 </Nav.Link>
               </LinkContainer>
-              <Nav.Link eventKey='link-0' onClick={onLogout}>
-                <i className='fas fa-power-off' /> Logout
+              <Nav.Link eventKey='link-0' onClick={onLogout} style={{color:'silver'}}>
+                <i className='fas fa-power-off' style={{color:'silver'}} /> Logout
               </Nav.Link>
             </Nav>
           ) : (
             <Nav>
-              <LinkContainer to='/signup'>
+              <LinkContainer to='/signup' style={{color:'silver'}}>
                 <Nav.Link eventKey='link-1'>Sign Up</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/login'>
+              <LinkContainer to='/login' style={{color:'silver'}}>
                 <Nav.Link eventKey='link-2'>Login</Nav.Link>
               </LinkContainer>
             </Nav>
