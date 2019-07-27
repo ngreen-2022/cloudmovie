@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from './layout/Spinner';
@@ -11,19 +11,11 @@ const UserRecommends = ({
   loading,
   userLikes,
   dramaList,
-  fantasyList,
   scifiList,
   mysteryList,
   documentaryList,
   getMovies
 }) => {
-  const [state, setState] = useState({
-    movie: null,
-    recommendedList: []
-  });
-
-  const { recommendedList } = state;
-
   const randomize = list => {
     for (let i = list.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -39,40 +31,48 @@ const UserRecommends = ({
     let randomMovie;
     if (userLikes.length > 0) {
       let count = 0;
-      while (count < 5) {
+
+      while (randomMovies.length < 3 || count < 3) {
         randomLike = randomize(userLikes);
         randomGen = randomLike.genre;
         movieGenList = eval(randomGen + 'List');
         randomMovie = randomize(movieGenList);
-        if (!randomMovies.includes(randomMovie)) {
-          randomMovies.push(randomMovie);
-        } else {
+
+        if (randomMovie === randomLike || randomMovies.includes(randomMovie)) {
           continue;
+        } else {
+          randomMovies.push(randomMovie);
         }
         count++;
       }
-      //todo: remove movie if it is in likes
-      if (randomMovies.length > 0) {
-        return randomMovies;
-      }
-    } else {
-      return null;
     }
+    return randomMovies;
   };
   var rec = recommended();
   return loading ? (
     <Spinner />
   ) : (
     <Fragment>
-      {rec != null ? (
-        <div>
-          <h1>Recomendations</h1>
-          {rec.map(movie => (
-            <h4> {movie.title}</h4>
-          ))}
+      <h1>Recommended</h1>
+      {rec.length > 0 ? (
+        <div className='carouselContainer' style={{ width: '400px' }}>
+          <Carousel>
+            {rec.map(movie => (
+              <Carousel.Item key={movie.id}>
+                <img
+                  className='d-block w-100'
+                  src={require('./imgs/horrorTwo.jpg')}
+                />
+                <Carousel.Caption>
+                  <h3>{movie.title}</h3>
+                  <h6>{movie.genre}</h6>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
+          </Carousel>
         </div>
       ) : (
-        <h4>No recommendations</h4>
+        <h4>No Recomendations!</h4>
       )}
     </Fragment>
   );
@@ -80,7 +80,6 @@ const UserRecommends = ({
 
 UserRecommends.propTypes = {
   dramaList: PropTypes.array.isRequired,
-  fantasyList: PropTypes.array.isRequired,
   documentaryList: PropTypes.array.isRequired,
   scifiList: PropTypes.array.isRequired,
   mysteryList: PropTypes.array.isRequired
@@ -89,7 +88,6 @@ UserRecommends.propTypes = {
 const mapStateToProps = state => ({
   userLikes: state.profile.userLikes,
   dramaList: state.movies.dramaList,
-  fantasyList: state.movies.fantasyList,
   documentaryList: state.movies.documentaryList,
   scifiList: state.movies.scifiList,
   mysteryList: state.movies.mysteryList,
