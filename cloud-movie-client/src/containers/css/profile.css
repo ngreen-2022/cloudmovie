@@ -13,19 +13,13 @@
   color: #999;
 }
 
-.recsCarouselContainer {
-  position: fixed;
+.wrap {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.wrap .recsCarouselContainer {
+  margin: 8%;
 }
 
-.noRec {
-  margin-left: -70%;
-  margin-top: 155%;
-  padding: 0;
-}
-
-.recTitle {
-  margin-left: -20%;
-  margin-top: 22%;
-  padding: 0;
-  position: fixed;
+.wrap .likesCarouselContainer {
 }
