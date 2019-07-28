@@ -68,7 +68,6 @@ const UserRecommends = ({
           } else {
             count += 1;
           }
-          console.log(count);
         }
       }
     }
@@ -80,7 +79,7 @@ const UserRecommends = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h4 className='recTitle'>Your Recommended Movies</h4>
+      <h4 className='recTitle'>Recommended For You</h4>
       {rec.length > 0 ? (
         <div className='carouselContainer' style={{ width: '450px' }}>
           <Carousel>
@@ -97,7 +96,10 @@ const UserRecommends = ({
                     '.jpg')}
                 />
                 <Carousel.Caption
-                  style={{ color: 'white', backgroundColor: 'black' }}
+                  style={{
+                    color: '#829FFF',
+                    backgroundColor: 'black'
+                  }}
                 >
                   <h3>{movie.title}</h3>
                   <h6>{movie.genre}</h6>
@@ -108,7 +110,7 @@ const UserRecommends = ({
         </div>
       ) : (
         <div className='noRec'>
-          <h4>No Recomendations!</h4>
+          <h5>No Recomendations!</h5>
         </div>
       )}
     </Fragment>

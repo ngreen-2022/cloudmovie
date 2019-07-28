@@ -1,12 +1,12 @@
 .App {
   margin-top: 15px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Raleway';
   background-color: silver;
 }
 
 .App .navbar-brand {
   font-weight: bold;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Raleway';
   font-size: 60px;
 }
 

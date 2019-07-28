@@ -4,9 +4,28 @@
 }
 
 .ProfilePage h2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway';
   font-weight: 600;
   border-block-end-style: solid;
+}
+
+h2 {
+  text-align: left;
+  text-shadow: -3px -3px 0px #829fff, 1px 1px 0px rgba(0, 0, 0, 1);
+  color: black;
+  opacity: 0.8;
+  font-size: 60px;
+  font-weight: 800;
+  border-bottom-style: dotted;
+  border-width: 3px;
+  border-color: black;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 30px;
+  color: #1b3280;
+  margin-bottom: 5%;
 }
 
 .ProfilePage p {
@@ -16,7 +35,15 @@
 .wrap {
   display: grid;
   grid-template-columns: 50% 50%;
+  margin-top: 3%;
 }
 .wrap .recsCarouselContainer {
-  margin: 8%;
+}
+
+.wrap .likesCarouselContainer {
+}
+
+div .carouselContainer {
+  border-radius: 5px;
+  border-color: blue;
 }

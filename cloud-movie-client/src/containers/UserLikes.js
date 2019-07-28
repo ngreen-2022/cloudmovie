@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Carousel } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import './css/profile.css';
 
 const UserLikes = ({ userLikes, profile }) => {
   return (
     <Fragment>
-      <h2>Welcome, {profile.name}</h2>
-      <h4>Your Likes</h4>
+      <h4>Liked by You</h4>
       {userLikes.length > 0 ? (
         <div className='carouselContainer' style={{ width: '450px' }}>
           <Carousel>
@@ -23,7 +23,10 @@ const UserLikes = ({ userLikes, profile }) => {
                     '.jpg')}
                 />
                 <Carousel.Caption
-                  style={{ color: 'white', backgroundColor: 'black' }}
+                  style={{
+                    color: '#829FFF',
+                    backgroundColor: 'black'
+                  }}
                 >
                   <h3>{like.title}</h3>
                   <h6>{like.genre}</h6>
@@ -33,7 +36,7 @@ const UserLikes = ({ userLikes, profile }) => {
           </Carousel>
         </div>
       ) : (
-        <h4>No Likes!</h4>
+        <h5>No Likes!</h5>
       )}
     </Fragment>
   );

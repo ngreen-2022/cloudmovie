@@ -14,10 +14,8 @@ const App = () => {
   }, []);
   return (
     <Provider store={store}>
-      <div className='App container'>
-        <Navigation />
-        <Routes />
-      </div>
+      <Navigation />
+      <Routes />
     </Provider>
   );
 };

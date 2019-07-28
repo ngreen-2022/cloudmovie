@@ -4,7 +4,7 @@
 }
 
 .Home .lander h1 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway';
   font-weight: 600;
 }
 
@@ -12,12 +12,12 @@
   color: #999;
 }
 
-.jumbotron{
-  background-image: url("../imgs/moviereel.jpg");
+.jumbotron {
+  background-image: url('../imgs/moviereel.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.blockquote{
+.blockquote {
   text-align: right;
 }

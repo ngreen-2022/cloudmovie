@@ -24,6 +24,8 @@ const ProfilePage = ({
     <Spinner />
   ) : (
     <Fragment>
+      <h2>Hi {profile.name}</h2>
+
       <div className='wrap'>
         <div className='likesCarouselContainer'>
           <UserLikes />
