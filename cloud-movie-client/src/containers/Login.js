@@ -37,31 +37,33 @@ const Login = ({ login, isAuthenticated, loadProfile }) => {
 
   return (
     <Fragment>
-      <div className='Login'>
-        <Form onSubmit={e => onSubmit(e)}>
-          <Form.Group controlId='email' size='lg'>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              autoFocus
-              type='email'
-              name='email'
-              value={email}
-              onChange={e => onChange(e)}
-            />
-          </Form.Group>
-          <Form.Group controlId='password' size='lg'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              value={password}
-              onChange={e => onChange(e)}
-              type='password'
-              name='password'
-            />
-          </Form.Group>
-          <Button block size='lg' disabled={!validateForm()} type='submit'>
-            Login
-          </Button>
-        </Form>
+      <div className='container'>
+        <div className='Login'>
+          <Form onSubmit={e => onSubmit(e)}>
+            <Form.Group controlId='email' size='lg'>
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                autoFocus
+                type='email'
+                name='email'
+                value={email}
+                onChange={e => onChange(e)}
+              />
+            </Form.Group>
+            <Form.Group controlId='password' size='lg'>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                value={password}
+                onChange={e => onChange(e)}
+                type='password'
+                name='password'
+              />
+            </Form.Group>
+            <Button block size='lg' disabled={!validateForm()} type='submit'>
+              Login
+            </Button>
+          </Form>
+        </div>
       </div>
     </Fragment>
   );

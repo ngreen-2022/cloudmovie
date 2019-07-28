@@ -27,12 +27,14 @@ const MovieList = ({
   return loading ? (
     <Spinner />
   ) : (
-    <Container className='movieList'>
-      <MovieSection list={dramaList} sectionTitle={'Drama'} />
-      <MovieSection list={documentaryList} sectionTitle={'Documentary'} />
-      <MovieSection list={scifiList} sectionTitle={'Science Fiction'} />
-      <MovieSection list={mysteryList} sectionTitle={'Mystery'} />
-    </Container>
+    <div className='container'>
+      <Container className='movieList'>
+        <MovieSection list={dramaList} sectionTitle={'Drama'} />
+        <MovieSection list={documentaryList} sectionTitle={'Documentary'} />
+        <MovieSection list={scifiList} sectionTitle={'Science Fiction'} />
+        <MovieSection list={mysteryList} sectionTitle={'Mystery'} />
+      </Container>
+    </div>
   );
 };
 

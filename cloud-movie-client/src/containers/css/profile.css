@@ -10,7 +10,6 @@
 }
 
 h2 {
-  text-align: left;
   text-shadow: -3px -3px 0px #829fff, 1px 1px 0px rgba(0, 0, 0, 1);
   color: black;
   opacity: 0.8;
@@ -36,14 +35,5 @@ h4 {
   display: grid;
   grid-template-columns: 50% 50%;
   margin-top: 3%;
-}
-.wrap .recsCarouselContainer {
-}
-
-.wrap .likesCarouselContainer {
-}
-
-div .carouselContainer {
-  border-radius: 5px;
-  border-color: blue;
+  width: 100%;
 }

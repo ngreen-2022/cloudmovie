@@ -88,54 +88,58 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
 
   const renderForm = () => {
     return (
-      <Form onSubmit={e => handleSubmit(e)}>
-        <Form.Group controlId='email' size='lg'>
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            autoFocus
-            type='email'
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-          />
-        </Form.Group>
-        <Form.Group controlId='name' size='lg'>
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type='name'
-            name='name'
-            value={name}
-            onChange={e => onChange(e)}
-          />
-        </Form.Group>
-        <Form.Group controlId='password' size='lg'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            name='password'
-            value={password}
-            onChange={e => onChange(e)}
-          />
-        </Form.Group>
-        <Form.Group controlId='confirmPassword' size='lg'>
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type='password'
-            name='confirmPassword'
-            value={confirmPassword}
-            onChange={e => onChange(e)}
-          />
-        </Form.Group>
-        <Button block size='lg' disabled={!validateForm()} type='submit'>
-          Sign Up
-        </Button>
-      </Form>
+      <div className='container'>
+        <Form onSubmit={e => handleSubmit(e)}>
+          <Form.Group controlId='email' size='lg'>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              autoFocus
+              type='email'
+              name='email'
+              value={email}
+              onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <Form.Group controlId='name' size='lg'>
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type='name'
+              name='name'
+              value={name}
+              onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <Form.Group controlId='password' size='lg'>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type='password'
+              name='password'
+              value={password}
+              onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <Form.Group controlId='confirmPassword' size='lg'>
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type='password'
+              name='confirmPassword'
+              value={confirmPassword}
+              onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <Button block size='lg' disabled={!validateForm()} type='submit'>
+            Sign Up
+          </Button>
+        </Form>
+      </div>
     );
   };
 
   return (
-    <div className='Signup'>
-      {isOnConfirm === false ? renderForm() : renderConfirmationForm()}
+    <div className='container'>
+      <div className='Signup'>
+        {isOnConfirm === false ? renderForm() : renderConfirmationForm()}
+      </div>
     </div>
   );
 };

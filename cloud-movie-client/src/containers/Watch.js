@@ -40,7 +40,7 @@ const Watch = ({ location, getMovieById, match, loading, movie }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <div>
+    <div className='container'>
       <div className='player-wrapper mt-4 mb-4'>
         <ReactPlayer
           ref={playerR}

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const MovieSection = ({ list, sectionTitle }) => {
   return (
-    <div>
+    <div className='container'>
       <Row className='panel panel-default'>
         <h1 className='panel-heading ml-3 my-4'>{sectionTitle}</h1>
       </Row>
