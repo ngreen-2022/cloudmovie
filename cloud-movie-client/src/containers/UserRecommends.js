@@ -36,7 +36,7 @@ const UserRecommends = ({
         likesIds.push(userLikes[i].id);
       }
 
-      while (randomMovies.length < 3 || count < 4) {
+      while (randomMovies.length < 3) {
         randomLike = randomize(userLikes);
         randomGen = randomLike.genre;
 
@@ -57,7 +57,7 @@ const UserRecommends = ({
         ) {
           randomMovies.push(randomMovie);
         } else {
-          if (count > 6) {
+          if (count > 20) {
             break;
           } else {
             count += 1;
@@ -83,7 +83,12 @@ const UserRecommends = ({
               <Carousel.Item key={movie.id}>
                 <img
                   className='d-block w-100'
-                  src={require('./imgs/horrorTwo.jpg')}
+                  style={{ width: '350px', height: '250px' }}
+                  src={require('./imgs/' +
+                    movie.genre +
+                    '/' +
+                    movie.title.replace(':', '') +
+                    '.jpg')}
                 />
                 <Carousel.Caption>
                   <h3>{movie.title}</h3>
