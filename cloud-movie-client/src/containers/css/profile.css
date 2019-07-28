@@ -14,7 +14,18 @@
 }
 
 .recsCarouselContainer {
-  margin-left: 50%;
-  margin-top: -27%;
-  position: relative;
+  position: fixed;
+}
+
+.noRec {
+  margin-left: -70%;
+  margin-top: 155%;
+  padding: 0;
+}
+
+.recTitle {
+  margin-left: -20%;
+  margin-top: 22%;
+  padding: 0;
+  position: fixed;
 }

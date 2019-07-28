@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from './layout/Spinner';
 import { Carousel } from 'react-bootstrap';
-import ProfilePage from './ProfilePage';
-import MovieList from './MovieList';
 import { getMovies } from '../actions/movies';
+import './css/profile.css';
 
 const UserRecommends = ({
   loading,
@@ -16,6 +15,13 @@ const UserRecommends = ({
   documentaryList,
   getMovies
 }) => {
+  useEffect(() => {
+    getMovies('drama');
+    getMovies('documentary');
+    getMovies('scifi');
+    getMovies('mystery');
+  }, []);
+
   const randomize = list => {
     for (let i = list.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -74,7 +80,7 @@ const UserRecommends = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h4>Your Recommended Movies</h4>
+      <h4 className='recTitle'>Your Recommended Movies</h4>
       {rec.length > 0 ? (
         <div className='carouselContainer' style={{ width: '400px' }}>
           <Carousel>
@@ -100,7 +106,9 @@ const UserRecommends = ({
           </Carousel>
         </div>
       ) : (
-        <h4>No Recomendations!</h4>
+        <div className='noRec'>
+          <h4>No Recomendations!</h4>
+        </div>
       )}
     </Fragment>
   );

@@ -15,9 +15,16 @@ const UserLikes = ({ userLikes, profile }) => {
               <Carousel.Item key={like.id}>
                 <img
                   className='d-block w-100'
-                  src={require('./imgs/horrorTwo.jpg')}
+                  style={{ width: '350px', height: '250px' }}
+                  src={require('./imgs/' +
+                    like.genre +
+                    '/' +
+                    like.title.replace(':', '') +
+                    '.jpg')}
                 />
-                <Carousel.Caption>
+                <Carousel.Caption
+                  style={{ color: 'white', backgroundColor: 'black' }}
+                >
                   <h3>{like.title}</h3>
                   <h6>{like.genre}</h6>
                 </Carousel.Caption>

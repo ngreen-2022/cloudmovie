@@ -6,6 +6,7 @@ import UserRecommends from './UserRecommends';
 import UserLikes from './UserLikes';
 import Spinner from './layout/Spinner';
 import { Carousel } from 'react-bootstrap';
+import './css/profile.css';
 
 const ProfilePage = ({
   profile,
@@ -24,8 +25,9 @@ const ProfilePage = ({
   ) : (
     <Fragment>
       <UserLikes />
-
-      <UserRecommends />
+      <div className='recsCarouselContainer'>
+        <UserRecommends />
+      </div>
     </Fragment>
   );
 };
