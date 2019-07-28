@@ -110,11 +110,11 @@ const MovieItem = ({
 
   return (
     <div>
-      <Card className='mb-2 mr-5' style={{ width: '18rem' }}>
+      <Card className='mb-2 mr-5' style={{ width: '18rem', height: '26rem' }}>
         {pickCardImg()}
         <Card.Body>
           <Card.Title className='d-flex justify-content-between'>
-            {title} <span> Rating: 4/5</span>
+            {title}
           </Card.Title>
           <Card.Text style={{ height: '9rem' }}>
             {description.length > 160
@@ -137,7 +137,9 @@ const MovieItem = ({
               </Button>
             ) : (
               <Button
-                style={{ width: '116px' }}
+                style={{
+                  width: '116px'
+                }}
                 onClick={e => onUnlike(e)}
                 className='btn btn-danger'
               >

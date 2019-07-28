@@ -9,7 +9,7 @@ const UserLikes = ({ userLikes, profile }) => {
       <h2>Welcome, {profile.name}</h2>
       <h4>Your Likes</h4>
       {userLikes.length > 0 ? (
-        <div className='carouselContainer' style={{ width: '400px' }}>
+        <div className='carouselContainer' style={{ width: '450px' }}>
           <Carousel>
             {userLikes.map(like => (
               <Carousel.Item key={like.id}>

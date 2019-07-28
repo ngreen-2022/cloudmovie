@@ -82,11 +82,12 @@ const UserRecommends = ({
     <Fragment>
       <h4 className='recTitle'>Your Recommended Movies</h4>
       {rec.length > 0 ? (
-        <div className='carouselContainer' style={{ width: '400px' }}>
+        <div className='carouselContainer' style={{ width: '450px' }}>
           <Carousel>
             {rec.map(movie => (
               <Carousel.Item key={movie.id}>
                 <img
+                  style={{ objectFit: 'fill' }}
                   className='d-block w-100'
                   style={{ width: '350px', height: '250px' }}
                   src={require('./imgs/' +
