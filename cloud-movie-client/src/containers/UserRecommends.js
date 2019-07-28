@@ -23,37 +23,58 @@ const UserRecommends = ({
     }
     return list[0];
   };
-  const recommended = () => {
-    let randomGen;
-    let movieGenList;
-    let randomMovies = [];
-    let randomLike;
-    let randomMovie;
-    if (userLikes.length > 0) {
-      let count = 0;
 
-      while (randomMovies.length < 3 || count < 3) {
+  const recommended = () => {
+    let randomGen, randomLike, randomMovie;
+    let movieGenList = [],
+      likesIds = [],
+      randomMovies = [];
+
+    if (userLikes.length > 0) {
+      var count = 0;
+      for (let i = 0; i < userLikes.length; i++) {
+        likesIds.push(userLikes[i].id);
+      }
+
+      while (randomMovies.length < 3) {
         randomLike = randomize(userLikes);
         randomGen = randomLike.genre;
-        movieGenList = eval(randomGen + 'List');
+
+        if (randomGen === 'drama') {
+          movieGenList = dramaList;
+        } else if (randomGen === 'scifi') {
+          movieGenList = scifiList;
+        } else if (randomGen === 'mystery') {
+          movieGenList = mysteryList;
+        } else if (randomGen === 'documentary') {
+          movieGenList = documentaryList;
+        }
         randomMovie = randomize(movieGenList);
 
-        if (randomMovie === randomLike || randomMovies.includes(randomMovie)) {
-          continue;
-        } else {
+        if (
+          !randomMovies.includes(randomMovie, 0) &&
+          !likesIds.includes(randomMovie.id, 0)
+        ) {
           randomMovies.push(randomMovie);
+        } else {
+          if (count > 20) {
+            break;
+          } else {
+            count += 1;
+          }
+          console.log(count);
         }
-        count++;
       }
     }
     return randomMovies;
   };
+
   var rec = recommended();
   return loading ? (
     <Spinner />
   ) : (
     <Fragment>
-      <h1>Recommended</h1>
+      <h4>Your Recommended Movies</h4>
       {rec.length > 0 ? (
         <div className='carouselContainer' style={{ width: '400px' }}>
           <Carousel>
@@ -61,9 +82,16 @@ const UserRecommends = ({
               <Carousel.Item key={movie.id}>
                 <img
                   className='d-block w-100'
-                  src={require('./imgs/horrorTwo.jpg')}
+                  style={{ width: '350px', height: '250px' }}
+                  src={require('./imgs/' +
+                    movie.genre +
+                    '/' +
+                    movie.title.replace(':', '') +
+                    '.jpg')}
                 />
-                <Carousel.Caption>
+                <Carousel.Caption
+                  style={{ color: 'white', backgroundColor: 'black' }}
+                >
                   <h3>{movie.title}</h3>
                   <h6>{movie.genre}</h6>
                 </Carousel.Caption>
