@@ -65,7 +65,6 @@ const UserRecommends = ({
           console.log(count);
         }
       }
-      return randomMovies;
     }
     return randomMovies;
   };
@@ -75,7 +74,7 @@ const UserRecommends = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1>Recommended</h1>
+      <h4>Your Recommended Movies</h4>
       {rec.length > 0 ? (
         <div className='carouselContainer' style={{ width: '400px' }}>
           <Carousel>
@@ -90,7 +89,9 @@ const UserRecommends = ({
                     movie.title.replace(':', '') +
                     '.jpg')}
                 />
-                <Carousel.Caption>
+                <Carousel.Caption
+                  style={{ color: 'white', backgroundColor: 'black' }}
+                >
                   <h3>{movie.title}</h3>
                   <h6>{movie.genre}</h6>
                 </Carousel.Caption>
