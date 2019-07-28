@@ -23,20 +23,20 @@ const UserRecommends = ({
     }
     return list[0];
   };
+
   const recommended = () => {
-    let randomGen;
-    let movieGenList = [];
-    let randomMovies = [];
-    let randomLike;
-    let randomMovie;
-    let likes = [];
+    let randomGen, randomLike, randomMovie;
+    let movieGenList = [],
+      likesIds = [],
+      randomMovies = [];
+
     if (userLikes.length > 0) {
-      let count = 0;
+      var count = 0;
       for (let i = 0; i < userLikes.length; i++) {
-        likes.push(userLikes[i].id);
+        likesIds.push(userLikes[i].id);
       }
 
-      while (randomMovies.length < 3 || count < 3) {
+      while (randomMovies.length < 3 || count < 4) {
         randomLike = randomize(userLikes);
         randomGen = randomLike.genre;
 
@@ -53,19 +53,23 @@ const UserRecommends = ({
 
         if (
           !randomMovies.includes(randomMovie, 0) &&
-          !likes.includes(randomMovie.id, 0)
+          !likesIds.includes(randomMovie.id, 0)
         ) {
-          console.log(!likes.includes(randomMovie.id, 0));
-          console.log(randomLike.id);
-          console.log(randomMovie.id);
           randomMovies.push(randomMovie);
+        } else {
+          if (count > 6) {
+            break;
+          } else {
+            count += 1;
+          }
+          console.log(count);
         }
-        count++;
       }
       return randomMovies;
     }
     return randomMovies;
   };
+
   var rec = recommended();
   return loading ? (
     <Spinner />
