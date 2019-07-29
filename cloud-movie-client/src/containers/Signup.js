@@ -64,7 +64,9 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
     return (
       <Form onSubmit={e => handleConfirmationSubmit(e)}>
         <Form.Group controlId='confirmationCode' size='lg'>
-          <Form.Label>Confirmation Code</Form.Label>
+          <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+            Confirmation Code
+          </Form.Label>
           <Form.Control
             autoFocus
             type='tel'
@@ -72,7 +74,9 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
             value={confirmationCode}
             onChange={e => onChange(e)}
           />
-          <Form.Text>Please check your email for the code.</Form.Text>
+          <Form.Text style={{ color: '#1b3280', fontWeight: 'bold' }}>
+            Please check your email for the code.
+          </Form.Text>
         </Form.Group>
         <Button
           block
@@ -91,7 +95,9 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
       <div className='container'>
         <Form onSubmit={e => handleSubmit(e)}>
           <Form.Group controlId='email' size='lg'>
-            <Form.Label>Email</Form.Label>
+            <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+              Email
+            </Form.Label>
             <Form.Control
               autoFocus
               type='email'
@@ -101,7 +107,9 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
             />
           </Form.Group>
           <Form.Group controlId='name' size='lg'>
-            <Form.Label>Name</Form.Label>
+            <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+              Name
+            </Form.Label>
             <Form.Control
               type='name'
               name='name'
@@ -110,7 +118,9 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
             />
           </Form.Group>
           <Form.Group controlId='password' size='lg'>
-            <Form.Label>Password</Form.Label>
+            <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+              Password
+            </Form.Label>
             <Form.Control
               type='password'
               name='password'
@@ -119,7 +129,9 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
             />
           </Form.Group>
           <Form.Group controlId='confirmPassword' size='lg'>
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+              Confirm Password
+            </Form.Label>
             <Form.Control
               type='password'
               name='confirmPassword'

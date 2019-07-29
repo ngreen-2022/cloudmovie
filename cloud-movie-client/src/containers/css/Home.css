@@ -25,7 +25,6 @@ p {
   font-weight: 700;
 }
 .jumbotron {
-  background-image: url('../imgs/moviereel.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }

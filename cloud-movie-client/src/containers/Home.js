@@ -15,12 +15,6 @@ const Home = ({ isAuthenticated }) => {
         <p className='text-center'>
           Stream On-Demand Video From Anywhere On Any Device
         </p>
-        <div className='blockquote text-right'>
-          <p>
-            Be so good they can't ignore you
-            <footer>-Steve Martin</footer>
-          </p>
-        </div>
         <div className='d-flex align-items-center justify-content-center'>
           {!isAuthenticated ? (
             <div>

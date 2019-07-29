@@ -123,7 +123,7 @@ const MovieItem = ({
           <Card.Title id='cardTitle' className='d-flex justify-content-between'>
             {title}
           </Card.Title>
-          <Card.Text style={{ height: '9rem' }}>
+          <Card.Text id='cardText' style={{ height: '9rem' }}>
             {description.length > 160
               ? description.substring(0, 160) + '...'
               : description}

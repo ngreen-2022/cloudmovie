@@ -41,7 +41,15 @@ const Login = ({ login, isAuthenticated, loadProfile }) => {
         <div className='Login'>
           <Form onSubmit={e => onSubmit(e)}>
             <Form.Group controlId='email' size='lg'>
-              <Form.Label>Email</Form.Label>
+              <Form.Label
+                style={{
+                  color: '#1b3280',
+                  fontWeight: 'bold',
+                  fontSize: '25px'
+                }}
+              >
+                Email
+              </Form.Label>
               <Form.Control
                 autoFocus
                 type='email'
@@ -51,7 +59,15 @@ const Login = ({ login, isAuthenticated, loadProfile }) => {
               />
             </Form.Group>
             <Form.Group controlId='password' size='lg'>
-              <Form.Label>Password</Form.Label>
+              <Form.Label
+                style={{
+                  color: '#1b3280',
+                  fontWeight: 'bold',
+                  fontSize: '25px'
+                }}
+              >
+                Password
+              </Form.Label>
               <Form.Control
                 value={password}
                 onChange={e => onChange(e)}

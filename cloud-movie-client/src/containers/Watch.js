@@ -58,18 +58,50 @@ const Watch = ({ location, getMovieById, match, loading, movie }) => {
       </div>
       <div className='container'>
         <div className='row ml-1 mt-4 mb-4'>
-          <h4 className='font-weight-bold m-0'>{title}</h4>
+          <h4
+            style={{
+              color: '#1b3280',
+              fontWeight: 'bold',
+              fontSize: '40px'
+            }}
+            className='font-weight-bold m-0'
+          >
+            {title}
+          </h4>
           <h6>
-            <span className='mt-2 ml-2 badge badge-info'> - {genre}</span>
+            <span
+              style={{
+                color: '#1b3280',
+                fontSize: '20px'
+              }}
+              className='mt-2 ml-2 badge badge-info'
+            >
+              {' '}
+              - {genre}
+            </span>
           </h6>
           <hr style={{ width: '100%', color: 'grey' }} className='my-3' />
           <Accordion style={{ width: '100%' }}>
             <Card>
               <Accordion.Toggle as={Card.Header} eventKey='0'>
-                <span className='font-weight-bold'>Synopsis</span>
+                <span
+                  style={{
+                    color: '#1b3280',
+                    fontSize: '25px',
+                    fontWeight: 'bold'
+                  }}
+                  className='font-weight-bold'
+                >
+                  Synopsis
+                </span>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey='0'>
-                <Card.Body className='small'>{description}</Card.Body>
+                <Card.Body
+                  style={{ color: '#1b3280', fontSize: '20px' }}
+                  className='small'
+                >
+                  {description}
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>
