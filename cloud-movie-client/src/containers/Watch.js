@@ -9,9 +9,10 @@ import Spinner from './layout/Spinner';
 import { getMovieById } from '../actions/movies';
 
 const Watch = ({ location, getMovieById, match, loading, movie }) => {
-  // const [playerState, setPlayerState] = useState({
-  //   playerRef: createRef()
-  // });
+  const [playerState, setPlayerState] = useState({
+    currentTime: localStorage.getItem('currentTime') || 0,
+    movieId: localStorage.getItem('movieId') || ''
+  });
 
   const playerR = useRef(null);
 
@@ -21,6 +22,9 @@ const Watch = ({ location, getMovieById, match, loading, movie }) => {
 
   // dismount useeffect
   useEffect(() => {
+    if (playerState.movieId === match.params.id) {
+      playerR.current.seekTo(playerState.currentTime);
+    }
     return function cleanup() {
       // const currentTime = playerRef.getCurrentTime();
       // const movieId = match.params.id;
