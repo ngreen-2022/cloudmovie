@@ -120,7 +120,11 @@ const MovieItem = ({
       <Card className='mb-2 mr-5' style={{ width: '18rem', height: '26rem' }}>
         {pickCardImg()}
         <Card.Body>
-          <Card.Title id='cardTitle' className='d-flex justify-content-between'>
+          <Card.Title
+            id='cardTitle'
+            style={{ height: '2rem' }}
+            className='d-flex justify-content-between'
+          >
             {title}
           </Card.Title>
           <Card.Text id='cardText' style={{ height: '9rem' }}>
@@ -128,7 +132,7 @@ const MovieItem = ({
               ? description.substring(0, 160) + '...'
               : description}
           </Card.Text>
-          <div style={{ width: '246px' }}>
+          <div style={{ width: '246px', position: 'absolute' }}>
             <Link
               className='btn btn-primary mr-3'
               to={{

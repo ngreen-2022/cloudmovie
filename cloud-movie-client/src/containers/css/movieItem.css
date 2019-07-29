@@ -7,13 +7,12 @@
 #cardTitle {
   color: #1b3280;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 20px;
   text-decoration: underline #829fff;
 }
 
 #cardText {
   color: #1b3280;
-
-  font-size: 15px;
-  margin-top: 10%;
+  font-size: 13px;
+  padding: 15px;
 }
