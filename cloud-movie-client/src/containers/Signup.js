@@ -62,24 +62,36 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
     let check = regx.test(password);
 
     if (len === true) {
-      document.getElementById('len').style.display = 'none';
+      document.getElementById('length').style.display = 'none';
+    } else if (document.getElementById('length') !== null && len === false) {
+      document.getElementById('length').style.display = 'list-item';
     }
     if (dig === true) {
       document.getElementById('number').style.display = 'none';
+    } else if (document.getElementById('number') !== null && dig === false) {
+      document.getElementById('number').style.display = 'list-item';
     }
     if (low === true) {
       document.getElementById('lower').style.display = 'none';
+    } else if (document.getElementById('lower') !== null && low === false) {
+      document.getElementById('lower').style.display = 'list-item';
     }
     if (up === true) {
       document.getElementById('upper').style.display = 'none';
+    } else if (document.getElementById('upper') !== null && up === false) {
+      document.getElementById('upper').style.display = 'list-item';
     }
     if (spec === true) {
       document.getElementById('special').style.display = 'none';
+    } else if (document.getElementById('special') !== null && spec === false) {
+      document.getElementById('special').style.display = 'list-item';
     }
     if (check === true && len === true) {
       document.getElementById('complete').style.display = 'list-item';
       document.getElementById('complete').style.fontSize = '20px';
       document.getElementById('complete').style.listStyleType = 'none';
+    } else if (document.getElementById('complete') !== null) {
+      document.getElementById('complete').style.display = 'none';
     }
     return (
       email.length > 0 &&
@@ -157,9 +169,9 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
                 />
               </Form.Group>
               <div classname='cDiv'>
-                <ul className='criteria'>
+                <ul className='verifyList'>
                   <li
-                    id='len'
+                    id='length'
                     style={{ display: 'list-item', listStyleType: 'circle' }}
                   >
                     8 Characters
@@ -196,6 +208,7 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
                   </li>
                 </ul>
               </div>
+
               <Form.Group controlId='password' size='lg'>
                 <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
                   Password
