@@ -51,8 +51,45 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
   };
 
   const validateForm = () => {
+    let len = password.length >= 8;
+    var regx = new RegExp('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)');
+
+    let dig = new RegExp('(?=.*\\d)').test(password);
+    let low = new RegExp('(?=.*[a-z])').test(password);
+    let up = new RegExp('(?=.*[A-Z])').test(password);
+    let spec = new RegExp('(?=.*\\W)').test(password);
+
+    let check = regx.test(password);
+
+    if (len === true) {
+      document.getElementById('len').style.display = 'none';
+    }
+    if (dig === true) {
+      document.getElementById('number').style.display = 'none';
+    }
+    if (low === true) {
+      document.getElementById('lower').style.display = 'none';
+    }
+    if (up === true) {
+      document.getElementById('upper').style.display = 'none';
+    }
+    if (spec === true) {
+      document.getElementById('special').style.display = 'none';
+    }
+    if (check === true && len === true) {
+      document.getElementById('complete').style.display = 'list-item';
+      document.getElementById('complete').style.fontSize = '20px';
+      document.getElementById('complete').style.listStyleType = 'none';
+    }
     return (
-      email.length > 0 && password.length > 0 && password === confirmPassword
+      email.length > 0 &&
+      len === true &&
+      check === true &&
+      dig === true &&
+      low === true &&
+      up === true &&
+      spec === true &&
+      password === confirmPassword
     );
   };
 
@@ -93,56 +130,100 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
   const renderForm = () => {
     return (
       <div className='container'>
-        <Form onSubmit={e => handleSubmit(e)}>
-          <Form.Group controlId='email' size='lg'>
-            <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
-              Email
-            </Form.Label>
-            <Form.Control
-              autoFocus
-              type='email'
-              name='email'
-              value={email}
-              onChange={e => onChange(e)}
-            />
-          </Form.Group>
-          <Form.Group controlId='name' size='lg'>
-            <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
-              Name
-            </Form.Label>
-            <Form.Control
-              type='name'
-              name='name'
-              value={name}
-              onChange={e => onChange(e)}
-            />
-          </Form.Group>
-          <Form.Group controlId='password' size='lg'>
-            <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
-              Password
-            </Form.Label>
-            <Form.Control
-              type='password'
-              name='password'
-              value={password}
-              onChange={e => onChange(e)}
-            />
-          </Form.Group>
-          <Form.Group controlId='confirmPassword' size='lg'>
-            <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
-              Confirm Password
-            </Form.Label>
-            <Form.Control
-              type='password'
-              name='confirmPassword'
-              value={confirmPassword}
-              onChange={e => onChange(e)}
-            />
-          </Form.Group>
-          <Button block size='lg' disabled={!validateForm()} type='submit'>
-            Sign Up
-          </Button>
-        </Form>
+        <div className='wrapper'>
+          <div className='subForm'>
+            <Form onSubmit={e => handleSubmit(e)}>
+              <Form.Group controlId='email' size='lg'>
+                <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+                  Email
+                </Form.Label>
+                <Form.Control
+                  autoFocus
+                  type='email'
+                  name='email'
+                  value={email}
+                  onChange={e => onChange(e)}
+                />
+              </Form.Group>
+              <Form.Group controlId='name' size='lg'>
+                <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+                  Name
+                </Form.Label>
+                <Form.Control
+                  type='name'
+                  name='name'
+                  value={name}
+                  onChange={e => onChange(e)}
+                />
+              </Form.Group>
+              <div classname='cDiv'>
+                <ul className='criteria'>
+                  <li
+                    id='len'
+                    style={{ display: 'list-item', listStyleType: 'circle' }}
+                  >
+                    8 Characters
+                  </li>
+                  <li
+                    id='upper'
+                    style={{ display: 'list-item', listStyleType: 'circle' }}
+                  >
+                    Uppercase Letter
+                  </li>
+                  <li
+                    id='lower'
+                    style={{ display: 'list-item', listStyleType: 'circle' }}
+                  >
+                    Lowercase Letter
+                  </li>
+                  <li
+                    id='number'
+                    style={{ display: 'list-item', listStyleType: 'circle' }}
+                  >
+                    Number
+                  </li>
+                  <li
+                    id='special'
+                    style={{ display: 'list-item', listStyleType: 'circle' }}
+                  >
+                    Special Character
+                  </li>
+                  <li
+                    id='complete'
+                    style={{ display: 'none', listStyleType: 'circle' }}
+                  >
+                    All criteria met!
+                  </li>
+                </ul>
+              </div>
+              <Form.Group controlId='password' size='lg'>
+                <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+                  Password
+                </Form.Label>
+                <Form.Control
+                  type='password'
+                  name='password'
+                  value={password}
+                  onChange={e => onChange(e)}
+                />
+              </Form.Group>
+              <Form.Group controlId='confirmPassword' size='lg'>
+                <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
+                  Confirm Password
+                </Form.Label>
+                <Form.Control
+                  type='password'
+                  name='confirmPassword'
+                  value={confirmPassword}
+                  onChange={e => onChange(e)}
+                />
+              </Form.Group>
+              <Button block size='lg' disabled={!validateForm()} type='submit'>
+                Sign Up
+              </Button>
+            </Form>
+          </div>
+        </div>
       </div>
     );
   };
