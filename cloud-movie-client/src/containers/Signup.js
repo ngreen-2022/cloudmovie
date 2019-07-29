@@ -86,21 +86,10 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
     } else if (document.getElementById('special') !== null && spec === false) {
       document.getElementById('special').style.display = 'list-item';
     }
-    if (check === true && len === true) {
-      document.getElementById('complete').style.display = 'list-item';
-      document.getElementById('complete').style.fontSize = '20px';
-      document.getElementById('complete').style.listStyleType = 'none';
-    } else if (document.getElementById('complete') !== null) {
-      document.getElementById('complete').style.display = 'none';
-    }
     return (
       email.length > 0 &&
       len === true &&
       check === true &&
-      dig === true &&
-      low === true &&
-      up === true &&
-      spec === true &&
       password === confirmPassword
     );
   };
@@ -168,51 +157,45 @@ const Signup = ({ register, registerConfirm, isAuthenticated }) => {
                   onChange={e => onChange(e)}
                 />
               </Form.Group>
-              <div classname='cDiv'>
-                <ul className='verifyList'>
-                  <li
-                    id='length'
-                    style={{ display: 'list-item', listStyleType: 'circle' }}
-                  >
-                    8 Characters
-                  </li>
-                  <li
-                    id='upper'
-                    style={{ display: 'list-item', listStyleType: 'circle' }}
-                  >
-                    Uppercase Letter
-                  </li>
-                  <li
-                    id='lower'
-                    style={{ display: 'list-item', listStyleType: 'circle' }}
-                  >
-                    Lowercase Letter
-                  </li>
-                  <li
-                    id='number'
-                    style={{ display: 'list-item', listStyleType: 'circle' }}
-                  >
-                    Number
-                  </li>
-                  <li
-                    id='special'
-                    style={{ display: 'list-item', listStyleType: 'circle' }}
-                  >
-                    Special Character
-                  </li>
-                  <li
-                    id='complete'
-                    style={{ display: 'none', listStyleType: 'circle' }}
-                  >
-                    All criteria met!
-                  </li>
-                </ul>
-              </div>
 
               <Form.Group controlId='password' size='lg'>
                 <Form.Label style={{ color: '#1b3280', fontWeight: 'bold' }}>
                   Password
                 </Form.Label>
+                <div classname='cDiv'>
+                  <ul className='verifyList'>
+                    <li
+                      id='length'
+                      style={{ display: 'list-item', listStyleType: 'circle' }}
+                    >
+                      8 Characters
+                    </li>
+                    <li
+                      id='upper'
+                      style={{ display: 'list-item', listStyleType: 'circle' }}
+                    >
+                      Uppercase Letter
+                    </li>
+                    <li
+                      id='lower'
+                      style={{ display: 'list-item', listStyleType: 'circle' }}
+                    >
+                      Lowercase Letter
+                    </li>
+                    <li
+                      id='number'
+                      style={{ display: 'list-item', listStyleType: 'circle' }}
+                    >
+                      Number
+                    </li>
+                    <li
+                      id='special'
+                      style={{ display: 'list-item', listStyleType: 'circle' }}
+                    >
+                      Special Character
+                    </li>
+                  </ul>
+                </div>
                 <Form.Control
                   type='password'
                   name='password'
