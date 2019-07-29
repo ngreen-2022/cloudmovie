@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Spinner from './layout/Spinner';
 import { Carousel } from 'react-bootstrap';
 import { getMovies } from '../actions/movies';
+import { Link } from 'react-router-dom';
 import './css/profile.css';
 
 const UserRecommends = ({
@@ -85,16 +86,27 @@ const UserRecommends = ({
           <Carousel>
             {rec.map(movie => (
               <Carousel.Item key={movie.id}>
-                <img
-                  style={{ objectFit: 'fill' }}
-                  className='d-block w-100'
-                  style={{ width: '350px', height: '250px' }}
-                  src={require('./imgs/' +
-                    movie.genre +
-                    '/' +
-                    movie.title.replace(':', '') +
-                    '.jpg')}
-                />
+                <Link
+                  to={{
+                    pathname: `/watch/${movie.id}`,
+                    state: {
+                      title: `${movie.title}`,
+                      genre: `${movie.genre}`,
+                      description: `${movie.description}`
+                    }
+                  }}
+                >
+                  <img
+                    style={{ objectFit: 'fill' }}
+                    className='d-block w-100'
+                    style={{ width: '350px', height: '250px' }}
+                    src={require('./imgs/' +
+                      movie.genre +
+                      '/' +
+                      movie.title.replace(':', '') +
+                      '.jpg')}
+                  />
+                </Link>
                 <Carousel.Caption
                   style={{
                     color: '#829FFF',

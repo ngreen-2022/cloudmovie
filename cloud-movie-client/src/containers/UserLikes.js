@@ -14,31 +14,33 @@ const UserLikes = ({ userLikes, profile }) => {
           <Carousel>
             {userLikes.map(like => (
               <Carousel.Item key={like.id}>
-                <img
-                  className='d-block w-100'
-                  style={{ width: '350px', height: '250px' }}
-                  src={require('./imgs/' +
-                    like.genre +
-                    '/' +
-                    like.title.replace(':', '') +
-                    '.jpg')}
-                />
+                <Link
+                  to={{
+                    pathname: `/watch/${like.id}`,
+                    state: {
+                      title: `${like.title}`,
+                      genre: `${like.genre}`,
+                      description: `${like.description}`
+                    }
+                  }}
+                >
+                  <img
+                    className='d-block w-100'
+                    style={{ width: '350px', height: '250px' }}
+                    src={require('./imgs/' +
+                      like.genre +
+                      '/' +
+                      like.title.replace(':', '') +
+                      '.jpg')}
+                  />
+                </Link>
                 <Carousel.Caption
                   style={{
                     color: '#829FFF',
                     backgroundColor: 'black'
                   }}
                 >
-                  <div style={{ width: '246px' }}>
-                    <Link
-                      className='btn btn-primary mr-3'
-                      to={{
-                        pathname: `/watch/${like.id}`
-                      }}
-                    >
-                      <span className='text-center'>Watch Now</span>
-                    </Link>
-                  </div>
+                  <div style={{ width: '246px' }} />
                   <h3>{like.title}</h3>
                   <h6>{like.genre}</h6>
                 </Carousel.Caption>
