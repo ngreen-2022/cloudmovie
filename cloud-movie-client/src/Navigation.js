@@ -22,35 +22,42 @@ const Navigation = ({ isAuthenticated, logout }) => {
       <Navbar.Collapse>
         <Nav className='ml-auto'>
           {isAuthenticated ? (
-            <Nav>
-              <LinkContainer to='/movielist' style={{ color: '#829FFF' }}>
-                <Nav.Link eventKey='link-3'>
-                  <i className='fas fa-ticket-alt' /> Movies
+            <div className='inner'>
+              <Nav>
+                <LinkContainer to='/movielist' style={{ color: '#829FFF' }}>
+                  <Nav.Link eventKey='link-3'>
+                    <i className='fas fa-ticket-alt' /> Movies
+                  </Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/me' style={{ color: '#829FFF' }}>
+                  <Nav.Link eventKey='link-4'>
+                    <i className='fas fa-user' /> Profile
+                  </Nav.Link>
+                </LinkContainer>
+                <Nav.Link
+                  eventKey='link-0'
+                  onClick={onLogout}
+                  style={{ color: '#829FFF' }}
+                >
+                  <i
+                    className='fas fa-power-off'
+                    style={{ color: '#829FFF' }}
+                  />{' '}
+                  Logout
                 </Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/me' style={{ color: '#829FFF' }}>
-                <Nav.Link eventKey='link-4'>
-                  <i className='fas fa-user' /> Profile
-                </Nav.Link>
-              </LinkContainer>
-              <Nav.Link
-                eventKey='link-0'
-                onClick={onLogout}
-                style={{ color: '#829FFF' }}
-              >
-                <i className='fas fa-power-off' style={{ color: '#829FFF' }} />{' '}
-                Logout
-              </Nav.Link>
-            </Nav>
+              </Nav>
+            </div>
           ) : (
-            <Nav>
-              <LinkContainer to='/signup' style={{ color: '#829FFF' }}>
-                <Nav.Link eventKey='link-1'>Sign Up</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/login' style={{ color: '#829FFF' }}>
-                <Nav.Link eventKey='link-2'>Login</Nav.Link>
-              </LinkContainer>
-            </Nav>
+            <div className='inner'>
+              <Nav>
+                <LinkContainer to='/signup' style={{ color: '#829FFF' }}>
+                  <Nav.Link eventKey='link-1'>Sign Up</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/login' style={{ color: '#829FFF' }}>
+                  <Nav.Link eventKey='link-2'>Login</Nav.Link>
+                </LinkContainer>
+              </Nav>
+            </div>
           )}
         </Nav>
       </Navbar.Collapse>
