@@ -7,7 +7,9 @@ const Home = ({ isAuthenticated }) => {
   return (
     <div className='container'>
       <div className='jumbotron justify-content-center align-self-center mt-4 mb-4'>
-        <h1 className='display-4 text-center'>Omegaflix</h1>
+        <h1 id='omega' className='display-4 text-center'>
+          Omegaflix
+        </h1>
         <p className='lead text-center'>Totally Legal Movies</p>
         <hr className='my-4' />
         <p className='text-center'>

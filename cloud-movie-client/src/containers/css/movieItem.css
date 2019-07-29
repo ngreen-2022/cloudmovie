@@ -3,3 +3,10 @@
   height: 18vh;
   object-fit: cover;
 }
+
+#cardTitle {
+  color: #1b3280;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: underline #829fff;
+}

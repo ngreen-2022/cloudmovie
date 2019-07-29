@@ -1,0 +1,7 @@
+h1 {
+  text-shadow: -3px -3px 0px #3565ff, 1px 1px 0px rgba(0, 0, 0, 1);
+  color: black;
+  opacity: 0.8;
+  font-size: 60px;
+  font-weight: 700;
+}

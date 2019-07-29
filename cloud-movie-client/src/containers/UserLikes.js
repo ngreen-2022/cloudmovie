@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './css/profile.css';
 
@@ -28,6 +29,16 @@ const UserLikes = ({ userLikes, profile }) => {
                     backgroundColor: 'black'
                   }}
                 >
+                  <div style={{ width: '246px' }}>
+                    <Link
+                      className='btn btn-primary mr-3'
+                      to={{
+                        pathname: `/watch/${like.id}`
+                      }}
+                    >
+                      <span className='text-center'>Watch Now</span>
+                    </Link>
+                  </div>
                   <h3>{like.title}</h3>
                   <h6>{like.genre}</h6>
                 </Carousel.Caption>

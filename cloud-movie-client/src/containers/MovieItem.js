@@ -37,6 +37,13 @@ const MovieItem = ({
           src={require('./imgs/drama/Oliver Twist.jpg')}
         />
       );
+    } else if (title === 'The Boy in the Plastic Bubble') {
+      return (
+        <Card.Img
+          variant='top'
+          src={require('./imgs/drama/The Boy in the Plastic Bubble.jpg')}
+        />
+      );
     } else if (title === 'Men of the Forest') {
       return (
         <Card.Img
@@ -113,7 +120,7 @@ const MovieItem = ({
       <Card className='mb-2 mr-5' style={{ width: '18rem', height: '26rem' }}>
         {pickCardImg()}
         <Card.Body>
-          <Card.Title className='d-flex justify-content-between'>
+          <Card.Title id='cardTitle' className='d-flex justify-content-between'>
             {title}
           </Card.Title>
           <Card.Text style={{ height: '9rem' }}>

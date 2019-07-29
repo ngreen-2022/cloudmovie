@@ -6,6 +6,7 @@ import { getMovies } from '../actions/movies';
 import { loadProfile } from '../actions/profile';
 import Spinner from './layout/Spinner';
 import MovieSection from './MovieSection';
+import './css/movieList.css';
 
 const MovieList = ({
   horrorList,
