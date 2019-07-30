@@ -13,14 +13,19 @@ const Navigation = ({ isAuthenticated, logout }) => {
     logout();
   };
   return (
-    <Navbar className='nav' expand='lg' style={{ backgroundColor: 'black' }}>
+    <Navbar
+      collapseOnSelect
+      className='navbar'
+      expand='sm'
+      style={{ backgroundColor: 'black' }}
+    >
       <Navbar.Brand>
         <Link className='logo' style={{ textDecoration: 'none' }} to='/'>
           Omegaflix
         </Link>
       </Navbar.Brand>
       <Navbar.Collapse>
-        <Nav className='ml-auto'>
+        <Nav className='ml-md-auto'>
           {isAuthenticated ? (
             <div className='inner'>
               <Nav>

@@ -18,3 +18,54 @@ body {
   margin: auto;
   margin-top: 1%;
 }
+
+.profile-container {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+@media (max-width: 900px) {
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  .navbar {
+    display: block;
+    text-align: center;
+  }
+
+  .navItem {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .navbar-nav {
+    display: grid;
+    grid-template-columns: -1 / 1;
+    margin: auto;
+    width: 50%;
+  }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 4rem;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'likes'
+      'recom';
+  }
+
+  .profile-header {
+    text-justify: center;
+    margin: auto;
+    width: 75%;
+  }
+
+  .likesCarouselContainer {
+    grid-area: 'likes';
+  }
+  .recsCarouselContainer {
+    grid-area: 'recom';
+  }
+}
