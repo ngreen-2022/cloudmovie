@@ -6,12 +6,12 @@ import {
   AUTH_ERROR,
   REGISTER_SUCCESS,
   REGISTER_CONFIRM,
-  BEGIN_USER_LOAD
+  BEGIN_USER_LOAD,
 } from './types';
 import Auth from '@aws-amplify/auth';
 import { API } from 'aws-amplify';
 
-export const register = ({ email, name, password }) => async dispatch => {
+export const register = ({ email, name, password }) => async (dispatch) => {
   try {
     await Auth.signUp(email, password);
 
@@ -25,8 +25,8 @@ export const registerConfirm = ({
   email,
   name,
   password,
-  confirmationCode
-}) => async dispatch => {
+  confirmationCode,
+}) => async (dispatch) => {
   try {
     await Auth.confirmSignUp(email, confirmationCode);
     const user = await Auth.signIn(email, password);
@@ -37,8 +37,8 @@ export const registerConfirm = ({
 
     await API.post('movies', '/createUser', {
       body: {
-        name
-      }
+        name,
+      },
     });
 
     dispatch({ type: REGISTER_CONFIRM, payload: user });
@@ -47,7 +47,7 @@ export const registerConfirm = ({
   }
 };
 
-export const loadUser = () => async dispatch => {
+export const loadUser = () => async (dispatch) => {
   dispatch({ type: BEGIN_USER_LOAD });
   try {
     const authUser = await Auth.currentAuthenticatedUser();
@@ -58,24 +58,24 @@ export const loadUser = () => async dispatch => {
   }
 };
 
-export const login = (email, password) => async dispatch => {
+export const login = (email, password) => async (dispatch) => {
   try {
     const user = await Auth.signIn(email, password);
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: user
+      payload: user,
     });
   } catch (err) {
     alert(err.message);
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
     });
   }
 };
 
-export const logout = () => async dispatch => {
+export const logout = () => async (dispatch) => {
   await Auth.signOut();
   dispatch({ type: LOGOUT });
 };
